@@ -1,5 +1,4 @@
 function britanniaVouchersQuery(conn) {
-  var start = new Date();
   var sql = conn.createStatement();
   var result = sql.executeQuery('SELECT * FROM britannia_vouchers_db ORDER BY ID DESC');
   
@@ -8,7 +7,6 @@ function britanniaVouchersQuery(conn) {
   var cell = sheet2.getRange('A2');
   var numCols = result.getMetaData().getColumnCount();
   
-  Logger.log(cell.getA1Notation());
   var row = 0;
   while (result.next()) {
     for (var col = 0; col < numCols; col++) {
@@ -19,12 +17,9 @@ function britanniaVouchersQuery(conn) {
     
   result.close();
   sql.close();
-  var end = new Date();
-  Logger.log('Time elapsed: %sms', end - start);
 }
 
 function britanniaContactQuery(conn) {
-  var start = new Date();
   var sql = conn.createStatement();
   var result = sql.executeQuery('SELECT * FROM britannia_contact_db ORDER BY ID DESC');
   
@@ -33,7 +28,6 @@ function britanniaContactQuery(conn) {
   var cell = sheet3.getRange('A2');
   var numCols = result.getMetaData().getColumnCount();
   
-  Logger.log(cell.getA1Notation());
   var row = 0;
   while (result.next()) {
     for (var col = 0; col < numCols; col++) {
@@ -44,6 +38,4 @@ function britanniaContactQuery(conn) {
     
   result.close();
   sql.close();
-  var end = new Date();
-  Logger.log('Time elapsed: %sms', end - start);
 }

@@ -1,5 +1,4 @@
 function etbVouchersQuery(conn) {
-  var start = new Date();
   var sql = conn.createStatement();
   var result = sql.executeQuery('SELECT * FROM etb_vouchers_db ORDER BY created_atr DESC');
   
@@ -8,7 +7,6 @@ function etbVouchersQuery(conn) {
   var cell = sheet1.getRange('A2');
   var numCols = result.getMetaData().getColumnCount();
   
-  Logger.log(cell.getA1Notation());
   var row = 0;
   while (result.next()) {
     for (var col = 0; col < numCols; col++) {
@@ -19,12 +17,9 @@ function etbVouchersQuery(conn) {
     
   result.close();
   sql.close();
-  var end = new Date();
-  Logger.log('Time elapsed: %sms', end - start);
 }
 
 function etbContactsQuery(conn) {
-  var start = new Date();
   var sql = conn.createStatement();
   var result = sql.executeQuery('SELECT * FROM etb_contact_db ORDER by ID DESC');
 
@@ -33,7 +28,6 @@ function etbContactsQuery(conn) {
   var cell = sheet4.getRange('A2');
   var numCols = result.getMetaData().getColumnCount();
   
-  Logger.log(cell.getA1Notation());
   var row = 0;
   while (result.next()) {
     for (var col = 0; col < numCols; col++) {
@@ -44,6 +38,4 @@ function etbContactsQuery(conn) {
   
   result.close();
   sql.close();
-  var end = new Date();
-  Logger.log('Time elapsed: %sms', end - start);
 }
